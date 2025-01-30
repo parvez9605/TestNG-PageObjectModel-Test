@@ -8,7 +8,8 @@ public class LoginPage {
 	
 	By userName = By.name("username");
 	By pass = By.name("password");
-	By saveBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button");
+//	By saveBtn = By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button");
+	By saveBtn = By.className("orangehrm-login-button");
 	By copyright = By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[3]/div[2]/p[1]");
 	
 	public LoginPage(WebDriver driver) {

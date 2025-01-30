@@ -18,7 +18,8 @@ public class HrmTest {
 	
 	@BeforeClass
 	public void startBrowser() {
-		WebDriverManager.chromedriver().setup();
+//		WebDriverManager.chromedriver().setup();
+		WebDriverManager.edgedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
@@ -39,7 +40,7 @@ public class HrmTest {
 	public void login() throws InterruptedException {
 		LoginPage objLogin = new LoginPage(driver);
 		String copyRightCheck = objLogin.checkCopyRight();
-		Assert.assertTrue(copyRightCheck.equals("OrangeHRM OS 5.2"), "Copy Right Miss Match");
+        Assert.assertEquals(copyRightCheck, "OrangeHRM OS 5.7", "Copy Right Miss Match");
 		objLogin.loginToOrangeHrm("Ädmin", "admin123");
 		System.out.println("Login To OrangeHRM Successfully");
 		Thread.sleep(5000);
@@ -49,7 +50,7 @@ public class HrmTest {
 	public void logout() throws InterruptedException {
 		DashboardPage objDash = new DashboardPage(driver);
 		String checkHeadingDash = objDash.checkHeading();
-		Assert.assertTrue(checkHeadingDash.equals("Dashboard"), "Dashboard Heading Miss Match");
+        Assert.assertEquals(checkHeadingDash, "Dashboard", "Dashboard Heading Miss Match");
 		objDash.userLogout();
 		System.out.println("Logout From OrangeHRM Successfully");
 		Thread.sleep(3000);
