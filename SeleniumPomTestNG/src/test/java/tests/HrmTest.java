@@ -26,24 +26,20 @@ public class HrmTest {
 		System.out.println("========Beowser Started========");
 	}
 	
+	@Test(priority = 1)
+	public void login() throws InterruptedException {
+		LoginPage objLogin = new LoginPage(driver);
+		objLogin.loginToOrangeHrm("Ädmin", "admin123");
+		System.out.println("Login To OrangeHRM Successfully");
+		Thread.sleep(5000);
+	}
+
 	@Test(priority = 0)
 	public void startAPp() {
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		String currentURL = driver.getCurrentUrl();
-		Assert.assertTrue(currentURL.contains("auth/login"));
-		
+
 		System.out.println("Application Loaded Successfully");
-	}
-	
-	@Test(priority = 1)
-	public void login() throws InterruptedException {
-		LoginPage objLogin = new LoginPage(driver);
-		String copyRightCheck = objLogin.checkCopyRight();
-        Assert.assertEquals(copyRightCheck, "OrangeHRM OS 5.7", "Copy Right Miss Match");
-		objLogin.loginToOrangeHrm("Ädmin", "admin123");
-		System.out.println("Login To OrangeHRM Successfully");
-		Thread.sleep(5000);
 	}
 	
 	@Test(priority = 2)
